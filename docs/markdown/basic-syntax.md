@@ -73,7 +73,7 @@ There are two ways to create links:
 
 [Hover over me to see my link title](https://www.google.com "Google's Homepage")
 
-[I'm a relative link to the ./stoplight-flavored-markdown.md file](./stoplight-flavored-markdown.md)
+[I'm a relative link to the ../introduction.md file](../introduction.md)
 
 ## Images
 
