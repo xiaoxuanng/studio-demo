@@ -21,6 +21,10 @@ paths:
           schema:
             type: integer
             format: int32
+        - schema:
+            type: string
+          in: query
+          name: offset
       responses:
         '200':
           description: A paged array of pets
@@ -88,4 +92,4 @@ components:
       x-tags:
         - Pets
       items:
-        $ref: ./models/pet.v1.yaml      
+        $ref: ./models/pet.v1.yaml
