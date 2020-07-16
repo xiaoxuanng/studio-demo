@@ -30,6 +30,9 @@
         },
         "user": {
           "$ref": "./user.v1.json"
+        },
+        "card": {
+          "$ref": "../../common/models with space/card.v1.json"
         }
       },
       "required": [

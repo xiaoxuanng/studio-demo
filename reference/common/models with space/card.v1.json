@@ -1,0 +1,15 @@
+{
+  "title": "card",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "number"
+  ]
+}
