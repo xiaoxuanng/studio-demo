@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "My APIs"
+    },
+    {
+      "uri": "/reference/petstore/openapi.v1.yaml",
+      "type": "item",
+      "title": "Petstore"
+    }
+  ]
+}
