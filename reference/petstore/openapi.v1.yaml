@@ -13,7 +13,7 @@ paths:
       summary: List all pets
       operationId: listPets
       tags:
-        - pets
+        - Foo
       parameters:
         - name: limit
           in: query
@@ -91,3 +91,6 @@ components:
       items:
         $ref: ./models/pet.v1.yaml
   securitySchemes: {}
+tags:
+  - name: pets
+  - name: Foo
