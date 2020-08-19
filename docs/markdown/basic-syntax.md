@@ -2,7 +2,7 @@
 tags: [01. Using Markdown]
 ---
 
-# Markdown Basics
+# Markdown Basics 2
 
 All of the notes, descriptions, and content fields in the Stoplight editors support use of [Stoplight Flavored Markdown](./stoplight-flavored-markdown.md).
 

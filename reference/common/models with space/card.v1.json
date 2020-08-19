@@ -10,6 +10,9 @@
     },
     "blah": {
       "type": "string"
+    },
+    "fee": {
+      "type": "string"
     }
   },
   "required": [
