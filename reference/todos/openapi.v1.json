@@ -223,7 +223,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "wefwefwef",
             "schema": {
               "type": "array",
               "items": {
@@ -253,7 +253,8 @@
           "500": {
             "$ref": "../common/openapi.v1.yaml#/responses/500"
           }
-        }
+        },
+        "description": "This returns a list of todos."
       }
     }
   }
