@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "To-dos 2",
+    "title": "To-dos",
     "version": "1.0",
     "description": "This OpenAPI v2 (Swagger) file represents a real API that lives at http://todos.stoplight.io.\n\nIt exposes functionality to manage to-do lists. xxx",
     "contact": {
