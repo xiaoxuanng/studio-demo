@@ -7,7 +7,7 @@ info:
 servers:
   - url: 'http://petstore.swagger.io/v1'
 paths:
-  /pets:
+  /pets/something:
     get:
       summary: List all pets
       operationId: listPets
@@ -25,6 +25,13 @@ paths:
             type: string
           in: query
           name: offset
+        - schema:
+            type: string
+          in: query
+          name: name
+        - schema:
+            type: string
+          in: header
       responses:
         '200':
           description: A paged array of pets
@@ -37,6 +44,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Pets'
+        '500':
+          description: Internal Server Error
         default:
           description: unexpected error
           content:
@@ -57,6 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+    parameters: []
   '/pets/{petId}':
     get:
       summary: Info for a specific pet
