@@ -4,6 +4,7 @@ type: object
 x-tags:
   - Pets
   - Pets!
+  - Say Hi!
 xml:
   name: Pet
 properties:
