@@ -3,6 +3,7 @@ description: A single pet.
 type: object
 x-tags:
   - Pets
+  - Pets!
 xml:
   name: Pet
 properties:
@@ -24,7 +25,7 @@ properties:
       - pending
       - sold
   category:
-    $ref: ./category.v1.yaml  
+    $ref: ./category.v1.yaml
 required:
   - name
   - photoUrls
