@@ -67,7 +67,7 @@ paths:
               schema:
                 $ref: ../common/models/error.v1.yaml
     parameters: []
-  '/pets/{petId}':
+  '/pets/{petId}/f':
     get:
       summary: Info for a specific pet
       operationId: showPetById
@@ -93,6 +93,12 @@ paths:
             application/json:
               schema:
                 $ref: ../common/models/error.v1.yaml
+    parameters:
+      - schema:
+          type: string
+        name: petId
+        in: path
+        required: true
 components:
   schemas:
     Pets:
