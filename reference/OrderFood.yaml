@@ -1,0 +1,225 @@
+swagger: '2.0'
+info:
+  title: XX-Eat
+  version: '1.0'
+  description: |-
+    This is an API that you can deploy on your localhost for test purposes. To get started, install a json server with this command:
+
+    npm install -g json-server
+
+    Once you have installed the server, run this command to start the local server:
+
+    json-server — watch db.json
+
+    Your server will be up at http://localhost:3000. The data available on http://localhost:3000 is from db.json file in the location where you have installed the server.
+host: 'localhost:3000'
+schemes:
+  - http
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  '/restaurant/{id}':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        description: ID of the restaurant
+    get:
+      summary: Get all restaurant categories
+      tags: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: ./common/models/restaurant.yaml
+          examples:
+            Restaurant Details:
+              Categories:
+                - category: string
+                  id: 0
+        '400':
+          $ref: '#/responses/Not-Found'
+        '':
+          schema:
+            $ref: ./common/models/restaurant.yaml
+      operationId: get-restaurant-id
+      description: 'Returns ID of selected restaurants '
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: ./common/models/restaurant.yaml
+          x-examples: {}
+    patch:
+      summary: ''
+      operationId: patch-restaurant
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: ./common/models/restaurant.yaml
+          examples:
+            Update info successful:
+              - name: Changed
+                category: Changed
+                rating: Changed
+                id: 0
+        '400':
+          $ref: '#/responses/Not-Found'
+        '401':
+          $ref: '#/responses/Unauthorized'
+        '404':
+          $ref: '#/responses/Not-Found'
+      description: Update a new restaurant's info
+      security:
+        - API Key - 1: []
+      parameters:
+        - $ref: '#/parameters/content-type'
+        - in: body
+          name: body
+          schema:
+            $ref: ./common/models/restaurant.yaml
+          x-examples:
+            example-1:
+              - name: string
+                category: string
+                rating: string
+                id: 0
+    delete:
+      summary: ''
+      operationId: delete-restaurant
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '401':
+          $ref: '#/responses/Unauthorized'
+        '404':
+          $ref: '#/responses/Not-Found'
+      description: Delete restaurant info by ID
+      security:
+        - API Key - 1: []
+      parameters: []
+  /restaurant:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          $ref: '#/responses/OK'
+        '404':
+          $ref: '#/responses/Not-Found'
+      operationId: get-restaurant
+      description: 'Returns list of restaurants '
+      security: []
+      parameters:
+        - $ref: '#/parameters/content-type'
+        - in: body
+          name: body
+          schema:
+            $ref: ./common/models/restaurant.yaml
+          x-examples: {}
+    post:
+      summary: ''
+      operationId: post-restaurant
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: ./common/models/restaurant.yaml
+        '400':
+          $ref: '#/responses/Not-Found'
+        '401':
+          $ref: '#/responses/Unauthorized'
+      description: 'Post info for a new restaurants '
+      security:
+        - API Key - 1: []
+      parameters:
+        - $ref: '#/parameters/content-type'
+        - in: body
+          name: body
+          schema:
+            $ref: ./common/models/restaurant.yaml
+definitions: {}
+securityDefinitions:
+  API Key - 1:
+    name: apikey1
+    type: apiKey
+    in: query
+responses:
+  Not-Found:
+    description: Example response
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+    schema:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+      x-examples:
+        example-1:
+          message: not found
+    examples:
+      example-1:
+        message: string
+  Unauthorized:
+    description: Example response
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+    schema:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+      x-examples:
+        example-1:
+          message: string
+    examples:
+      example-1:
+        message: string
+  OK:
+    description: Example response
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+    schema:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+      x-examples:
+        example-1:
+          message: OK
+parameters:
+  content-type:
+    name: content-type
+    in: header
+    required: true
+    schema:
+      type: string
+    description: application/json

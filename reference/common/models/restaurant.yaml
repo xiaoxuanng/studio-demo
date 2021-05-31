@@ -1,0 +1,42 @@
+type: array
+description: ''
+minItems: 1
+uniqueItems: true
+x-examples:
+  example-1:
+    - name: Sushi
+      category: Asian
+      rating: 5 Stars
+      id: 1
+    - name: Vapiano
+      category: Pizza
+      rating: 3 Stars
+      id: 2
+    - name: KFC
+      category: Fastfood
+      rating: 5 Stars
+      id: 3
+    - name: Curry Wurst
+      category: German
+      rating: 4 Stars
+      id: 4
+items:
+  type: object
+  properties:
+    name:
+      type: string
+      minLength: 1
+    category:
+      type: string
+      minLength: 4
+    rating:
+      type: string
+      minLength: 1
+    id:
+      type: number
+      readOnly: true
+  required:
+    - name
+    - category
+    - rating
+    - id
