@@ -30,54 +30,27 @@ paths:
     get:
       summary: Get all restaurant categories
       tags: []
+      operationId: get-restaurant-id
+      description: 'Returns ID of selected restaurants '
+      parameters: []
       responses:
         '200':
           description: OK
           schema:
             $ref: ./common/models/restaurant.yaml
-          examples:
-            Restaurant Details:
-              Categories:
-                - category: string
-                  id: 0
         '400':
-          $ref: '#/responses/Not-Found'
-        '':
+          description: Bad Request
           schema:
-            $ref: ./common/models/restaurant.yaml
-      operationId: get-restaurant-id
-      description: 'Returns ID of selected restaurants '
-      parameters:
-        - in: body
-          name: body
-          schema:
-            $ref: ./common/models/restaurant.yaml
-          x-examples: {}
+            type: object
+            properties: {}
     patch:
       summary: ''
       operationId: patch-restaurant
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: ./common/models/restaurant.yaml
-          examples:
-            Update info successful:
-              - name: Changed
-                category: Changed
-                rating: Changed
-                id: 0
-        '400':
-          $ref: '#/responses/Not-Found'
-        '401':
-          $ref: '#/responses/Unauthorized'
-        '404':
-          $ref: '#/responses/Not-Found'
       description: Update a new restaurant's info
       security:
         - API Key - 1: []
       parameters:
-        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/contentType'
         - in: body
           name: body
           schema:
@@ -88,138 +61,105 @@ paths:
                 category: string
                 rating: string
                 id: 0
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: ./common/models/restaurant.yaml
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties: {}
     delete:
       summary: ''
       operationId: delete-restaurant
-      responses:
-        '200':
-          $ref: '#/responses/OK'
-        '401':
-          $ref: '#/responses/Unauthorized'
-        '404':
-          $ref: '#/responses/Not-Found'
       description: Delete restaurant info by ID
       security:
         - API Key - 1: []
-      parameters: []
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: ./common/models/restaurant.yaml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties: {}
   /restaurant:
     get:
       summary: Your GET endpoint
       tags: []
-      responses:
-        '200':
-          $ref: '#/responses/OK'
-        '404':
-          $ref: '#/responses/Not-Found'
       operationId: get-restaurant
       description: 'Returns list of restaurants '
       security: []
       parameters:
-        - $ref: '#/parameters/content-type'
         - in: body
           name: body
           schema:
             $ref: ./common/models/restaurant.yaml
           x-examples: {}
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties: {}
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties: {}
     post:
       summary: ''
       operationId: post-restaurant
-      responses:
-        '201':
-          description: Created
-          schema:
-            $ref: ./common/models/restaurant.yaml
-        '400':
-          $ref: '#/responses/Not-Found'
-        '401':
-          $ref: '#/responses/Unauthorized'
       description: 'Post info for a new restaurants '
       security:
         - API Key - 1: []
       parameters:
-        - $ref: '#/parameters/content-type'
+        - $ref: '#/parameters/contentType'
         - in: body
           name: body
           schema:
             $ref: ./common/models/restaurant.yaml
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties: {}
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties: {}
 definitions: {}
 securityDefinitions:
   API Key - 1:
     name: apikey1
     type: apiKey
     in: query
-responses:
-  Not-Found:
-    description: Example response
-    content:
-      application/json:
-        schema:
-          properties:
-            id:
-              type: string
-    schema:
-      description: ''
-      type: object
-      properties:
-        message:
-          type: string
-          minLength: 1
-      required:
-        - message
-      x-examples:
-        example-1:
-          message: not found
-    examples:
-      example-1:
-        message: string
-  Unauthorized:
-    description: Example response
-    content:
-      application/json:
-        schema:
-          properties:
-            id:
-              type: string
-    schema:
-      description: ''
-      type: object
-      properties:
-        message:
-          type: string
-          minLength: 1
-      required:
-        - message
-      x-examples:
-        example-1:
-          message: string
-    examples:
-      example-1:
-        message: string
-  OK:
-    description: Example response
-    content:
-      application/json:
-        schema:
-          properties:
-            id:
-              type: string
-    schema:
-      description: ''
-      type: object
-      properties:
-        message:
-          type: string
-          minLength: 1
-      required:
-        - message
-      x-examples:
-        example-1:
-          message: OK
+responses: {}
 parameters:
-  content-type:
-    name: content-type
+  contentType:
+    name: Content-Type
     in: header
     required: true
     schema:
       type: string
+      default: application/json
     description: application/json
+  ID:
+    name: ID
+    in: path
+    required: true
+    schema:
+      type: string
+    description: ID of restaurant
+    

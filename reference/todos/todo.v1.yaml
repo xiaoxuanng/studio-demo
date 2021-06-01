@@ -372,6 +372,10 @@ components:
                 type: string
             required:
               - message
+          examples:
+            example-1:
+              value:
+                message: string
   examples:
     todo:
       value:
